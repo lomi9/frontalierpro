@@ -3,15 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: rgba(255, 255, 255, 0.3);
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --mint: rgba(209, 227, 221, 1);
+  --dark-gray: #5a6167;
+  --dark-red: #2c3033;
+  --medium-red: #6b0f1a;
+  --light-red: #ff3333;
 }
 
 body {
@@ -24,4 +22,186 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.lato {
+  font-family: var(--font-lato);
+}
+
+.poppins {
+  font-family: var(--font-poppins);
+}
+
+.kanit {
+  font-family: var(--font-kanit);
+}
+
+.halo-on-hover {
+  background: radial-gradient(circle, rgba(213, 43, 29, 1), transparent 70%);
+}
+
+.halo-effect {
+  background: radial-gradient(circle, rgba(213, 43, 29, 1), transparent 70%);
+}
+
+.navbar-gradient {
+  background: rgb(107, 15, 26);
+  background: radial-gradient(
+    circle,
+    rgba(107, 15, 26, 0) 15%,
+    rgba(107, 15, 26, 1) 20%,
+    rgba(107, 15, 26, 1) 40%,
+    rgba(49, 8, 31, 0.8) 100%
+  );
+}
+
+/* ************** CSS RESET  **************  */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Conteneur global qui gère le scroll snapping */
+.scroll-container {
+  scroll-snap-type: y mandatory; /* Active le snapping vertical */
+  height: 100vh;
+  overflow-y: scroll; /* Pour permettre le scroll */
+  scroll-behavior: smooth;
+}
+
+/* Chaque bloc de section */
+.scroll-snap {
+  scroll-snap-align: start; /* S'aligne en haut de l'écran quand on scrolle */
+  height: 100vh; /* Chaque section prend la hauteur de l'écran */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: white;
 }

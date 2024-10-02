@@ -1,17 +1,27 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Lato, Poppins, Kanit } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
+import Logo from "./components/Logo";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const lato_init = Lato ({
+  subsets: ['latin'],
+  weight: ["100", "300", "400", "700", "900"],
+  variable :'--font-lato'
+})
+
+const poppins_init = Poppins ({
+  subsets: ['latin'],
+  weight: ["100","200","300", "400", "500", "600", "700", "800", "900"],
+  variable :'--font-poppins'
+})
+
+const kanit_init = Kanit ({
+  subsets: ['latin'],
+  weight: ["100","200","300", "400", "500", "600", "700", "800", "900"],
+  variable :'--font-kanit'
+})
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,9 +36,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${lato_init.variable} ${poppins_init.variable} ${kanit_init.variable} antialiased`}
       >
-        {children}
+        <div className="nav-container relative w-full h-auto flex">
+          <div className=""></div>
+          <Logo/>
+            <Navbar/>
+          </div>
+          <main className="flex flex-wrap h-[auto] w-full">
+          <div className="fixed h-screen overflow-hidden w-screen">
+      <img
+        id="heroImage"
+        src="/geometric_shapes.jpeg"
+        alt="Hero Businessman"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      </div>
+            {children}
+          </main>
       </body>
     </html>
   );
