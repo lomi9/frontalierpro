@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ArrowBigDown, Dot, MoveDown } from "lucide-react";
 
 const Hero = () => {
   const titleRef = useRef<HTMLHeadingElement | null>(null); // Ajout du type ici pour aider TypeScript
