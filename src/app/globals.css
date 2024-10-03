@@ -188,20 +188,24 @@ table {
 }
 
 /* Conteneur global qui gère le scroll snapping */
+
+/* 
 .scroll-container {
-  scroll-snap-type: y mandatory; /* Active le snapping vertical */
+  scroll-snap-type: y mandatory; 
   height: 100vh;
-  overflow-y: scroll; /* Pour permettre le scroll */
+  overflow-y: scroll; 
   scroll-behavior: smooth;
 }
 
-/* Chaque bloc de section */
+
 .scroll-snap {
-  scroll-snap-align: start; /* S'aligne en haut de l'écran quand on scrolle */
-  height: 100vh; /* Chaque section prend la hauteur de l'écran */
+  scroll-snap-align: start; 
+  height: 100vh; 
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
   color: white;
 }
+
+*/

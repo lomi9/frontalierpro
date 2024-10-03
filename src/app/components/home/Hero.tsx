@@ -71,24 +71,24 @@ timeline.to(
       ref={sectionRef}
       className="next-section opacity-0  w-full h-full pb-10 pt-[19vh] sm:pt-[20vh] px-6 sm:px-12">
       <div className=' overflow-hidden flex-wrap relative flex w-full h-full border border-solid border-gray-400 border-opacity-30 backdrop-blur-[5px] rounded-xl  bg-white/5'>
-            <div className="absolute z-10 w-[50vh] sm:w-[75vh] bottom-[20%] sm:bottom-[-100px] right-[-20%] sm:right-[30%] overflow-hidden">
+            <div className="absolute z-10 w-[50vh] md:w-[75vh] lg:w-[75vh] bottom-[20%] md:bottom-[60px] lg:bottom-[30px] right-[-20%] sm:right-[0] md:right-[-10%] lg:right-[0] overflow-hidden">
               <img
                 src="/suisse_3d_map.png"
                 alt="carte 3d de l'europe avec drapeau suisse"
                 className="w-[100%] object-cover"
               />
             </div>
-            <div className='w-full sm:w-1/2  h-auto sm:h-full z-20  p-10 pt-20 sm:p-6 sm:pl-20 flex sm:justify-start sm:items-center'>
+            <div className='w-full lg:w-1/2   h-auto md:h-[80%] lg:h-full z-20  p-10 pt-20 md:p-6 md:pl-5 lg:pl-20 flex md:justify-start md:items-center'>
                 <div className='flex w-full justify-start flex-col gap-6'>
-                    <p className='text-darkGray lato text-[5vw] sm:text-5xl font-bold'>Votre passerelle</p>
-                    <p className='text-darkGray kanit text-[5vw] sm:text-5xl font-thin'>Vers une carrière réussie</p>
-                    <p className='text-darkGray lato text-[5vw] sm:text-5xl font-bold'>En Suisse</p>
+                    <p className='text-darkGray lato text-[5vw] md:text-3xl xl:text-5xl font-bold'>Votre passerelle</p>
+                    <p className='text-darkGray kanit text-[5vw] md:text-3xl xl:text-5xl font-thin'>Vers une carrière réussie</p>
+                    <p className='text-darkGray lato text-[5vw] md:text-3xl xl:text-5xl font-bold'>En Suisse</p>
                 </div>
             </div>
-            <div className='w-full sm:w-1/2 h-auto sm:h-full  sm:p-6 flex justify-center flex-wrap content-end gap-6 pb-10 sm:gap-0 sm:pb-0 sm:content-evenly'>
-                
+            <div className='w-full lg:w-1/2 h-auto md:h-auto lg:h-full  md:p-6 flex justify-center flex-wrap content-end gap-6 pb-10 md:gap-0 md:pb-0 md:content-end'>
+                <div className="w-full flex justify-around md:justify-evenly lg:justify-around  pb-20 md:pb-10 lg:pb-20">
                 {/* Bouton "Tailwind Connect" n 1 desktop */}
-      <div className="w-full hidden sm:flex justify-center">
+      <div className=" hidden md:flex justify-center">
         <button className="bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block">
           <span className="absolute inset-0 overflow-hidden rounded-full">
             <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -117,13 +117,13 @@ timeline.to(
       </div>
 
       {/* Bouton "Tailwind Connect" n 2 desktop */}
-      <div className="w-full hidden sm:flex justify-center ">
-        <button className="bg-slate-900 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-2xl p-px text-xs font-semibold leading-6 text-white inline-block h-[100px] w-[300px]">
-          <span className="absolute inset-0 overflow-hidden rounded-full">
-            <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <div className="hidden md:flex justify-center">
+        <button className="bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block">
+          <span className="absolute z-40 inset-0 overflow-hidden rounded-full">
+            <span className="absolute z-40 inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
           </span>
-          <div className="relative h-[100px] w-[300px] flex space-x-2 items-center z-10 rounded-2xl bg-zinc-700 py-0.5 px-4 ring-1 ring-white/10 justify-center">
-            <span className="poppins text-lg">Je suis déjà frontalier</span>
+          <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-0.5 px-4 ring-1 ring-white/10">
+            <span className="poppins">Je suis déjà frontalier</span>
             <svg
               fill="none"
               height="16"
@@ -140,13 +140,14 @@ timeline.to(
               />
             </svg>
           </div>
-          <span className="absolute bottom-[-2px] left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-red-400/90 to-red-400/0 transition-opacity duration-500 group-hover:opacity-40" />
+          <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-red-400/90 to-red-400/0 transition-opacity duration-500 group-hover:opacity-40" />
           <span className="absolute -top-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-red-400/90 to-red-400/0 transition-opacity duration-500 group-hover:opacity-40" />
         </button>
       </div>
+      </div>
 
       {/* Bouton "Tailwind Connect" n 1 mobile */}
-      <div className="button-1-mobile w-full flex sm:hidden justify-center">
+      <div className="button-1-mobile w-full flex md:hidden justify-center">
         <button className="bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block">
           <span className="absolute inset-0 overflow-hidden rounded-full">
             <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -175,7 +176,7 @@ timeline.to(
       </div>
 
       {/* Bouton "Tailwind Connect" n 2 mobile */}
-      <div className="button-1-mobile w-full flex sm:hidden justify-center">
+      <div className="button-1-mobile w-full flex md:hidden justify-center">
         <button className="bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block">
           <span className="absolute inset-0 overflow-hidden rounded-full">
             <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />

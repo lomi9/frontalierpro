@@ -3,6 +3,7 @@ import { Lato, Poppins, Kanit } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Logo from "./components/Logo";
+import Footer from "./components/Footer";
 
 const lato_init = Lato ({
   subsets: ['latin'],
@@ -49,11 +50,14 @@ export default function RootLayout({
         id="heroImage"
         src="/geometric_shapes.jpeg"
         alt="Hero Businessman"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover z-0"
       />
       </div>
             {children}
+           
           </main>
+
+      <Footer/>
       </body>
     </html>
   );

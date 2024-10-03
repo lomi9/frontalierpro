@@ -17,7 +17,7 @@ export default function Home() {
     <div className="relative h-screen scroll-snap bg-green-400 w-full pb-10 pt-20 px-6">
 
 </div>
-<div className="relative h-screen scroll-snap bg-blue-200 w-full py-10 px-6">
+<div className="relative h-screen scroll-snap bg-transparent w-full py-10 px-6">
 
 </div>
   </div>
