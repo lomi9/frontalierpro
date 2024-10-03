@@ -189,6 +189,11 @@ table {
 
 /* Conteneur global qui gère le scroll snapping */
 
+.hero-title {
+  will-change: transform;
+}
+
+/*
 .scroll-container {
   scroll-snap-type: y mandatory;
   height: 100vh;
@@ -205,3 +210,5 @@ table {
   font-size: 3rem;
   color: white;
 }
+
+*/

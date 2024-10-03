@@ -1,17 +1,22 @@
-"use client"
+"use client";
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
 const Hero = () => {
-  const titleRef = useRef<HTMLHeadingElement | null>(null); // Ajout du type ici pour aider TypeScript
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
+  const backgroundRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (titleRef.current) {
+    if (titleRef.current && sectionRef.current && backgroundRef.current) {
       const letters = titleRef.current.querySelectorAll("span");
 
-      const timeline = gsap.timeline();
+      const timeline = gsap.timeline({
+        smoothChildTiming: true,
+        defaults: { overwrite: 'auto' } // Assure que l'animation n'entre pas en conflit
+      });
+
 
       // Animation des lettres qui apparaissent une par une
       timeline.fromTo(
@@ -26,27 +31,37 @@ const Hero = () => {
         }
       );
 
-      // Ajout d'une pause
-      timeline.to(letters, { duration: 1.5 });
-
       // Animation pour faire remonter le titre et rétrécir
       timeline.to(titleRef.current, {
-        y: () => -window.innerHeight * 0.32, // 20% de la hauteur de l'écran
+        y: -window.innerHeight * 0.32, 
         scale: 0.8,
-        duration: 1.5,
+        duration: 1,
         ease: "power3.inOut",
+        force3D: true, 
       });
-// Animation de la section suivante (fond + contenu)
-timeline.to(
-  sectionRef.current, // L'animation de l'opacité du conteneur de la section
-  {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: "power3.out",
-  },
-  "-=1" // Commence cette animation légèrement avant la fin de la précédente
-);
+
+      // Animation du background de la section suivante (fond)
+      timeline.to(
+        backgroundRef.current,
+        {
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+        },
+        "-=1" // Chevauchement léger pour fluidité
+      );
+
+      // Animation du contenu de la section suivante
+      timeline.to(
+        sectionRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 2,
+          ease: "power3.out",
+        },
+        "-=3" // Chevauchement pour que le contenu apparaisse après le fond
+      );
     }
   }, []);
 
@@ -55,7 +70,7 @@ timeline.to(
       <div className="absolute inset-0 flex items-center justify-center">
         <h1
           ref={titleRef}
-          className="text-black/20 text-[11vw] sm:text-[12vw] font-bold hero-title poppins uppercase flex items-baseline align-baseline"
+          className="hero-title text-black/20 text-[11vw] sm:text-[12vw] font-bold hero-title poppins uppercase flex items-baseline align-baseline"
         >
           {/** Séparation des lettres en spans */}
           {"Frontalier Pro".split("").map((letter, index) => (
@@ -68,10 +83,10 @@ timeline.to(
 
       {/* Section suivante */}
       <div 
-      ref={sectionRef}
+      ref={backgroundRef}
       className="next-section opacity-0  w-full h-full pb-10 pt-[19vh] sm:pt-[20vh] px-6 sm:px-12">
-      <div className=' overflow-hidden flex-wrap relative flex w-full h-full border border-solid border-gray-400 border-opacity-30 backdrop-blur-[5px] rounded-xl  bg-white/5'>
-            <div className="absolute z-10 w-[50vh] md:w-[75vh] lg:w-[75vh] bottom-[20%] md:bottom-[60px] lg:bottom-[30px] right-[-20%] sm:right-[0] md:right-[-10%] lg:right-[0] overflow-hidden">
+      <div  className=' overflow-hidden flex-wrap relative flex w-full h-full border border-solid border-gray-400 border-opacity-30 backdrop-blur-[5px] rounded-xl  bg-white/5'>
+            <div ref={sectionRef} className=" absolute z-10 w-[50vh] md:w-[75vh] lg:w-[75vh] bottom-[20%] md:bottom-[60px] lg:bottom-[30px] right-[-20%] sm:right-[0] md:right-[-10%] lg:right-[0] overflow-hidden">
               <img
                 src="/suisse_3d_map.png"
                 alt="carte 3d de l'europe avec drapeau suisse"
