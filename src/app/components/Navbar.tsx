@@ -4,7 +4,8 @@ import Link from "next/link";
 import { Mail, ShoppingBasket, User, ChevronDown, X } from "lucide-react";
 import Submenu from "./SubMenu";
 import { gsap } from "gsap";
-import MobileSubmenu from "./MobileSubMenu";
+import MobileSubmenu from "./MobileSubmenu";
+
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
