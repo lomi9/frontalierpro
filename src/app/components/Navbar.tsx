@@ -6,10 +6,10 @@ import Submenu from "./SubMenu";
 import { gsap } from "gsap";
 import MobileSubmenu from "./MobileSubmenu";
 
-
 const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Menu principal (desktop et mobile)
+  const [isDesktopSubmenuOpen, setIsDesktopSubmenuOpen] = useState(false); // Sous-menu desktop
+  const [isMobileSubmenuOpen, setIsMobileSubmenuOpen] = useState(false); // Sous-menu mobile
 
   const navRef = useRef<HTMLDivElement | null>(null);
   const itemsRef = useRef<HTMLDivElement | null>(null);
@@ -20,17 +20,21 @@ const Navbar: React.FC = () => {
   const isMobile = () => window.innerWidth < 768;
 
   const toggleMenu = () => {
-    // Si le menu est ouvert et que l'utilisateur clique pour le fermer,
-    // on s'assure également de fermer le sous-menu en mode mobile.
-    if (isMenuOpen && isSubmenuOpen) {
-      setIsSubmenuOpen(false);
+    // Ferme les sous-menus en fermant le menu principal
+    if (isMenuOpen) {
+      setIsDesktopSubmenuOpen(false);
+      setIsMobileSubmenuOpen(false);
     }
 
     setIsMenuOpen((prev) => !prev);
   };
 
-  const toggleSubmenu = () => {
-    setIsSubmenuOpen((prev) => !prev);
+  const toggleDesktopSubmenu = () => {
+    setIsDesktopSubmenuOpen((prev) => !prev); // Basculer l'état du sous-menu desktop
+  };
+
+  const toggleMobileSubmenu = () => {
+    setIsMobileSubmenuOpen((prev) => !prev); // Basculer l'état du sous-menu mobile
   };
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -40,7 +44,9 @@ const Navbar: React.FC = () => {
       submenuRef.current &&
       !submenuRef.current.contains(event.target as Node)
     ) {
-      setIsSubmenuOpen(false);
+      // Ferme les sous-menus si clic à l'extérieur
+      setIsDesktopSubmenuOpen(false);
+      setIsMobileSubmenuOpen(false);
     }
   };
 
@@ -81,7 +87,7 @@ const Navbar: React.FC = () => {
       <nav
         ref={navRef}
         className={`hidden sm:flex z-50 group fixed top-[20px] left-1/2 transform -translate-x-1/2 h-[60px] p-[1px] bg-gradient-to-r from-transparent to-transparent border-0 transition-all duration-500 ease-in-out ${
-          isMenuOpen ? "w-[600px]" : "w-[170px]"
+          isMenuOpen ? "w-[650px]" : "w-[170px]"
         }`}
       >
         <div className="flex relative px-6 gap-6 items-center justify-evenly w-full h-full rounded-full border border-solid border-gray-400 border-opacity-30 backdrop-blur-[25px] backdrop-saturate-[1.06] bg-white/30">
@@ -103,15 +109,15 @@ const Navbar: React.FC = () => {
                   Devenir Frontalier
                 </p>
               </Link>
-              {/* Toggle Submenu */}
+              {/* Toggle Submenu for Desktop */}
               <div
                 className="hover:text-lightRed flex items-center cursor-pointer"
-                onClick={toggleSubmenu}
+                onClick={toggleDesktopSubmenu}
               >
-                <p className=" kanit">Services</p>
+                <p className="kanit">Services</p>
                 <ChevronDown
                   className={`ml-2 transition-transform duration-300 ${
-                    isSubmenuOpen ? "rotate-180" : "rotate-0"
+                    isDesktopSubmenuOpen ? "rotate-180" : "rotate-0"
                   }`}
                 />
               </div>
@@ -128,6 +134,9 @@ const Navbar: React.FC = () => {
               </p>
             </div>
           )}
+
+          {/* Afficher le sous-menu desktop en fonction de l'état */}
+          {isDesktopSubmenuOpen && <Submenu ref={submenuRef} />}
         </div>
       </nav>
 
@@ -137,7 +146,7 @@ const Navbar: React.FC = () => {
         className="sm:hidden z-50 group fixed top-[20px] left-1/2 transform -translate-x-1/2 h-[60px] p-[1px] bg-gradient-to-r from-transparent to-transparent border-0 transition-all duration-500 ease-in-out w-[170px]"
       >
         <div className="flex relative px-6 gap-6 items-center justify-evenly w-full h-full rounded-full border border-solid border-gray-400 border-opacity-30 backdrop-blur-[25px] backdrop-saturate-[1.06] bg-white/30">
-        <div
+          <div
             className={`animated-square w-[30px] h-[30px] bg-transparent border border-solid border-gray-500 rounded-md transform rotate-45 group-hover:rotate-[135deg] group-hover:shadow-[0_0_10px_3px_rgba(255,51,51,0.6)] group-hover:shadow-lightRed group-hover:border-[#FF3333] cursor-pointer transition-all duration-300 ease-in-out`}
           ></div>
           <p
@@ -161,15 +170,13 @@ const Navbar: React.FC = () => {
             </p>
           </Link>
 
-    
-            
-             {/* MobileSubmenu */}
+          {/* Toggle Submenu for Mobile */}
           <MobileSubmenu
-            isSubmenuOpen={isSubmenuOpen}
-            toggleSubmenu={toggleSubmenu}
+            isSubmenuOpen={isMobileSubmenuOpen}
+            toggleSubmenu={toggleMobileSubmenu}
             ref={submenuRef}
           />
-      -
+
           <div className="absolute bottom-[40px] flex gap-6 justify-evenly items-center border border-solid p-4 px-6 shadow-md border-gray-400 rounded-full">
             <Mail className="size-8 cursor-pointer hover:text-lightRed flex items-center" />
             <ShoppingBasket className="size-8 cursor-pointer hover:text-lightRed flex items-center" />

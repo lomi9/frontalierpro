@@ -10,7 +10,7 @@ export default function Home() {
     <div className="scroll-snap flex w-full">
       <Hero/>
     </div>
-    <div className="h-screen scroll-snap bg-transparent  w-full pb-10 pt-28 px-12">
+    <div className="presentation relative h-screen scroll-snap bg-transparent  w-full pb-10 pt-28 px-12">
       <Presentation/>
 
     </div>
