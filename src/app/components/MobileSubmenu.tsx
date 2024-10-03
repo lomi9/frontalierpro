@@ -33,4 +33,7 @@ const MobileSubmenu = forwardRef<HTMLDivElement, MobileSubmenuProps>(
   }
 );
 
+// Ajout du displayName pour résoudre l'erreur
+MobileSubmenu.displayName = "MobileSubmenu";
+
 export default MobileSubmenu;
